@@ -289,23 +289,3 @@ var myInterval = setInterval(function() {
     clearInterval(myInterval);
   }
 }, 1000);
-
-
-car = {
-  name: "Toyota",
-  info: function() {
-    console.log("I'm a " + this.name);
-  }
-}
-
-console.log("A");
-setTimeout(function(){
-  console.log("Hello World");
-}, 2000);
-console.log("B");
-
-var counter = 0;
-timer = setInterval(function(){
-  console.log(counter);
-  counter++;
-}, 1000);

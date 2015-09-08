@@ -133,3 +133,123 @@ $("a").on("mouseenter", function(){
 $(".button").on("click", function(){
   $("#button-message").html("Button " + $(this).attr("id") + " was clicked");
 });
+
+$(".container").on("click", function() {
+  $(this).children().addClass("highlight");
+});
+
+$(".shape").on("mouseenter", function(){
+  $(this).toggleClass("highlight");
+});
+
+
+$(".large").on("click", function(){
+  $(this).removeClass("medium");
+  $(this).addClass("small");
+});
+
+$(".medium").on("click", function(){
+  $(this).removeClass("medium");
+  $(this).addClass("small");
+});
+
+$(".small").on("click", function(){
+  $(this).hide();
+});
+
+$(".shape").on("click", function(){
+  if($(this).hasClass("small")){
+    $(this).hide();
+  } else if($(this).hasClass("medium")) {
+    $(this).removeClass("medium").addClass("small");
+  } else if($(this).hasClass("large")) {
+    $(this).removeClass("large").addClass("medium");
+  }
+});
+
+$("[type='submit']").on("click", function(){
+  $("#form-message").html($("[type='text']").val());
+});
+
+$("[type='submit']").on("click", function(){
+  $("#form-message").append($("[type=text]").val() + "<br>");
+});
+
+$("#button-1").on("click", function(){
+  $("#green-container").toggle();
+});
+
+$("#button-2").on("click", function(){
+  $("#button-message").fadeOut();
+});
+
+$("#button-3").on("click", function(){
+  $("#button-message").fadeIn();
+});
+
+$("#button-4").on("click", function(){
+  $("#green-container").slideUp();
+});
+
+
+$(document).on("keypress", function(event){
+  var charCode = event.which;
+  console.log(event);
+  var key = String.fromCharCode(charCode);
+  console.log("The key: " + key + " was pressed");
+});
+
+$("#green-container").click(function(e){
+  console.log(e);
+});
+
+
+$(document).keypress(function(event){
+  var charCode = event.which;
+  var key = String.fromCharCode(charCode);
+  if(key === "b") {
+    $(".blue.shape").toggle();
+  } else if(key === " ") {
+    event.preventDefault();
+    $("#green-container").append("<div class='small blue circle shape'></div>");
+  }
+});
+
+$("input[type='text']").on("keyup", function() {
+  console.log("value is: " + $(this).val());
+});
+
+$("form").on("submit", function(){
+  $("[type=text]").val("");
+});
+
+$("form").on("submit", function(){
+  var input = $("[type=text]").eq(0).val().toLowerCase();
+  var colors = ["red", "blue", "green", "grey", "black"];
+  if(colors.indexOf(input) >= 0) {
+    $("." + input + ".shape").remove();
+  } else {
+    $("#form-message").html("Invalid Color");
+  }
+  $("[type=text]").val("");
+});
+
+
+$("#orange-container").click(function(){
+  alert("orange container clicked");
+});
+
+$(".black.square").click(function(e){
+  alert("black square clicked");
+  e.stopPropagation();
+});
+
+$("a").click(function(e){
+  alert("link clicked");
+  e.preventDefault();
+  // window.location = "http://www.codecore.ca";
+});
+
+$(".container").on("click", ".shape .circle", function() {
+  console.log("Shape is clicked");
+});
